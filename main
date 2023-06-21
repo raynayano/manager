@@ -1,0 +1,46 @@
+todos = []
+
+def add_todo(todo):
+    todos.append(todo)
+    print("待办事项已添加。")
+
+def view_todos():
+    if todos:
+        print("待办事项列表：")
+        for index, todo in enumerate(todos, start=1):
+            print(f"{index}. {todo}")
+    else:
+        print("没有待办事项。")
+
+def complete_todo(index):
+    if 1 <= index <= len(todos):
+        completed_todo = todos.pop(index - 1)
+        print(f"已完成事项：{completed_todo}")
+    else:
+        print("无效的待办事项索引。")
+
+print("待办事项管理命令行工具")
+
+while True:
+    print("\n请选择操作：")
+    print("1. 添加待办事项")
+    print("2. 查看待办事项")
+    print("3. 完成待办事项")
+    print("4. 退出程序")
+
+    choice = input("请选择操作（输入数字）：")
+
+    if choice == '4':
+        print("谢谢使用，再见！")
+        break
+
+    if choice == '1':
+        todo = input("请输入待办事项：")
+        add_todo(todo)
+    elif choice == '2':
+        view_todos()
+    elif choice == '3':
+        index = int(input("请输入要完成的待办事项索引："))
+        complete_todo(index)
+    else:
+        print("无效的选择，请重新输入。")
